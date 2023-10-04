@@ -1,11 +1,15 @@
 package com.marco.photozclone;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class Photo {
 
 	private String id;
 	
+	@NotEmpty
 	private String filename;
 	
+	private byte[] data;
 	
 	public Photo(String id, String filename) {
 		super();
@@ -17,7 +21,15 @@ public class Photo {
 	public Photo() {
 		
 	}
-	
+
+
+	public byte[] getData(){
+		return data;
+	}
+
+	public void setData(byte[] data){
+		this.data = data;
+	}
 
 	public String getId() {
 		return id;
