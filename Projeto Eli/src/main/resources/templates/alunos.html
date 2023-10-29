@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Alunos</title>
+</head>
+
+<body>
+
+    <div class="card text-bg-light mb-3" style="max-width: 60%; margin-left: 10%; margin-right: auto; margin-top: 3%;">
+        <div class="card-header">Alunos</div>
+        <div class="card-body">
+            <form method="POST" th:object="${aluno}" th:action="@{/salvaAluno}">
+                <table>
+                    <tr><td>Matricula:</td><td><input type="text" name="matricula" th:field="*{matricula}"></td></tr>
+                    <tr><td>Nome:</td><td><input type="text" name="nome" id="nome" th:field="*{nome}"></td></tr>
+                    <tr><td>Data de Nascimento:</td><td><input type="date" name="dataNascimento" th:field="*{dataNascimento}"></td></tr>
+                    <tr><td><input type="submit" value="Salvar"></input></td><td></td></tr>
+                </table>
+            </form>
+            <br>
+            <table class="table">
+                <thead class="table-primary">
+                    <tr>
+                        <td>Matrícula</td>
+                        <td>Nome</td>
+                        <td>Data de Nascimento</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr th:each="aluno: ${listaDeAlunos}">
+                        <td th:text="${aluno.matricula}"></td>
+                        <td th:text="${aluno.nome}"></td>
+                        <td th:text="${#dates.format(aluno.dataNascimento, 'dd/MM/yyyy')}"></td>
+                        <td><a th:href="@{/selecionaAluno(id=${aluno.matricula})}">Alterar</a></td>
+                        <td><a th:href="@{/removeAluno(id=${aluno.matricula})}">Excluir</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

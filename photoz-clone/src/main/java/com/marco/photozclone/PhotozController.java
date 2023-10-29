@@ -19,8 +19,9 @@ public class PhotozController {
 	}
 	
 	@GetMapping("/photoz/{id}")
-	public List<Photo> get(@PathVariable String id){
-		return db;
-	}
-	return db.get(id);
+	public Photo get(@PathVariable String id) {
+        Photo photo = db.get(id);
+        ig(photo == null) throw new ResponseStatusException(HttpSatus.NOT_FOUND);
+        return photo;
+    }
 }
