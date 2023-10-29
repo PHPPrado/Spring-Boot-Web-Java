@@ -8,17 +8,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class PhotozController {
-	
-	private List<Photo> db = List.of(new Photo("1", "hello.jpg"));
+
+	private Map<String, Photo> db = new HashMap<>(){{
+		put(new Photo("1", "hello.jpg"))
+	}};
 
 	@GetMapping("/photoz")
-	public List<Photo> get(){
-		return db;
+	public List<Photo> get() {
+		return db.values();
 	}
 	
 	@GetMapping("/photoz/{id}")
 	public List<Photo> get(@PathVariable String id){
 		return db;
 	}
-	
+	return db.get(id);
 }
