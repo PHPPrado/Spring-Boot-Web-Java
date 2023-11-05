@@ -16,10 +16,22 @@
         <div class="card-body">
             <form method="POST" th:object="${aluno}" th:action="@{/salvaAluno}">
                 <table>
-                    <tr><td>Matricula:</td><td><input type="text" name="matricula" th:field="*{matricula}"></td></tr>
-                    <tr><td>Nome:</td><td><input type="text" name="nome" id="nome" th:field="*{nome}"></td></tr>
-                    <tr><td>Data de Nascimento:</td><td><input type="date" name="dataNascimento" th:field="*{dataNascimento}"></td></tr>
-                    <tr><td><input type="submit" value="Salvar"></input></td><td></td></tr>
+                    <tr><td>Matricula:</td><td><input type="text" name="matricula"
+                                                      th:field="*{matricula}"></td></tr>
+                    <tr><td>Nome:</td><td><input type="text" name="nome"
+                                                 th:field="*{nome}">
+                        <span class="validationError"
+                              th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"
+                              style="color:red"></span>
+                    </td></tr>
+                    <tr><td>Data de Nascimento:</td><td><input type="date"
+                                                               name="dataNascimento" th:field="*{dataNascimento}">
+                        <span class="validationError"
+                              th:if="${#fields.hasErrors('dataNascimento')}"
+                              th:errors="*{dataNascimento}" style="color:red"></span>
+                    </td></tr>
+                    <tr><td><input type="submit"
+                                   value="Salvar"></input></td><td></td></tr>
                 </table>
             </form>
             <br>
