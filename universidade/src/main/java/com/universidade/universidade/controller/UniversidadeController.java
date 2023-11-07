@@ -29,16 +29,16 @@ public class UniversidadeController {
     @PostMapping("/add")
     public void addUniversidade(@RequestBody Universidade universidade){
         universidadeRepository.save(universidade);
-
-    }
     /*
-    {
-            "nome":"USP",
-            "cnpj":"34572869413563",
-            "area":"Medicina",
-            "cep": 17595365,
-            "site":"https://www5.usp.br"
-    }
+        {
+                "nome":"USP",
+                "cnpj":"34572869413563",
+                "area":"Medicina",
+                "cep": 17595365,
+                "site":"https://www5.usp.br"
+        }
     */
+    }
+
 
 }
