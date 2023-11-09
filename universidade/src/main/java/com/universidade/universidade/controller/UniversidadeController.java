@@ -4,12 +4,24 @@ import com.universidade.universidade.model.Universidade;
 import com.universidade.universidade.model.UniversidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/universidades")
 public class UniversidadeController {
+
+    private RestTemplate restTemplate = new RestTemplate();
+
+    @GetMapping("/teste")
+    public String testeGet(){
+        String url = "http://localhost:8080/universidades/all";
+        return restTemplate.getForObject(url, String.class);
+    }
+
+
+
 
     @Autowired
     UniversidadeRepository universidadeRepository;
