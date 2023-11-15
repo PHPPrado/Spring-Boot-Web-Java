@@ -1,4 +1,4 @@
-package med.voll.api.domain.controller;
+package med.voll.api.controller;
 
 import jakarta.validation.Valid;
 import med.voll.api.domain.medico.*;
