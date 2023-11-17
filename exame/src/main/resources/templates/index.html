@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Página</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+        }
+
+        section {
+            margin: 20px;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #333;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Minha Página</h1>
+    <nav>
+        <ul>
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section>
+    <h2>Formulário Centralizado</h2>
+    <form>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <br>
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+</section>
+
+<section>
+    <h2>Tabela</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>RA</th>
+            <th>Nome</th>
+            <th>Curso</th>
+            <th>Semestre</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aluno: ${lista}">
+            <td th:text="${aluno.RA}"></td>
+            <td th:text="${aluno.nome}"></td>
+            <td th:text="${aluno.curso}"></td>
+            <td th:text="${aluno.semestre}"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<footer>
+    <p>&copy; 2023 Minha Página. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
