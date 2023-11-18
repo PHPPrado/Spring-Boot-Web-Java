@@ -4,27 +4,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Size;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Aluno {
+public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int idCurso;
 
-    @Size(min = 7, max = 7)
-    private String RA;
-
-    @Size(min = 10, max = 100)
-    private String nome;
-
-    private String curso;
-
-    private String semestre;
+    private String nomeCurso;
 }
