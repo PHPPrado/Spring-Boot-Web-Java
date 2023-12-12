@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 //import com.unip.universidade.lixo.AlunoService;
@@ -30,6 +31,7 @@ public class AlunoController {
     public ModelAndView listarAlunos(@ModelAttribute("aluno") Aluno aluno) {
         ModelAndView modelAndView = new ModelAndView("alunos");
         modelAndView.addObject("listaDeAlunos", alunoRepository.findAll());
+//        testeGetAlunos();
         return modelAndView;
     }
 
@@ -59,5 +61,12 @@ public class AlunoController {
         alunoRepository.deleteById(Integer.valueOf(matricula));
         return "redirect:/listaAlunos";
     }
+
+    private RestTemplate restTemplate = new RestTemplate();
+    public void testeGetAlunos(){
+        String url = "http://localhost:8080/listaAlunos";
+        System.out.println(restTemplate.getForObject(url, String.class));
+    }
+
 
 }
